@@ -15,7 +15,7 @@ const app = require('./app.js');
 // fatal error
 function fatal(msg) {
     // format msg
-    msg = '\x1b[31m[FATAL] ' + msg + '\x1b[0m\n';
+    msg = '\x1b[1;31m[FATAL] ' + msg + '\x1b[0m\n';
 
     // log to stderr
     process.stderr.write(msg);
@@ -31,7 +31,7 @@ function fatal(msg) {
 // normal error
 function error(msg) {
     // format msg
-    msg = '\x1b[1;31m[ERROR] ' + msg + '\n\x1b[0m';
+    msg = '\x1b[31m[ERROR] ' + msg + '\n\x1b[0m';
 
     // log to stderr
     process.stderr.write(msg);
