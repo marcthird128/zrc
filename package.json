@@ -20,7 +20,8 @@
   "type": "commonjs",
   "main": "it depends on if you are using it as a server or client",
   "scripts": {
-    "test": "test",
+    "windows": "scripts\\test",
+    "linux": "./scripts/test",
     "build": "webpack"
   },
   "devDependencies": {

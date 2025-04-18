@@ -11,6 +11,9 @@
 const fs = require('fs');
 const { fatal, error, log } = require('./utils.js');
 
+// config path
+const configPath = './config.json';
+
 // default config
 const defaultConfig =
 `{
@@ -26,7 +29,7 @@ function load() {
 
     // try to load config
     try {
-        string = fs.readFileSync('./config.json', {encoding: 'utf8'});
+        string = fs.readFileSync(configPath, {encoding: 'utf8'});
     } catch (e) {
         // could not load config
         error('Could not load config file: ' + e.message);
@@ -34,7 +37,7 @@ function load() {
         // create default config
         log('Creating default config');
         try {
-            fs.writeFileSync('./config.json', defaultConfig);
+            fs.writeFileSync(configPath, defaultConfig);
             
             // try again
             log('Trying to load config again');
