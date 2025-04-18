@@ -27,6 +27,7 @@ function main() {
     
     // load confg
     app.config = config.load();
+    app.autoRestart = app.config.autoRestart; // change auto restart
     log('Loaded config');
 
     // create http server
