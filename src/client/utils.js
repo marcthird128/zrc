@@ -17,8 +17,7 @@ function fatal(msg) {
     // format msg
     msg = '\x1b[31m[FATAL] ' + msg + '\x1b[0m\n';
 
-    // log to stdout and stderr
-    process.stdout.write(msg);
+    // log to stderr
     process.stderr.write(msg);
 
     // restart client
@@ -34,8 +33,7 @@ function error(msg) {
     // format msg
     msg = '\x1b[1;31m[ERROR] ' + msg + '\n\x1b[0m';
 
-    // log to stdout and stderr
-    process.stdout.write(msg);
+    // log to stderr
     process.stderr.write(msg);
 }
 
