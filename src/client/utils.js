@@ -60,7 +60,7 @@ function startClient() {
     console.log('Starting new client');
     
     // get restart script
-    let restartScript = process.platform === 'win32' ? 'start.bat' : 'start.sh';
+    let restartScript = process.platform === 'win32' ? 'client.bat' : 'client.sh';
     
     // run it in new process
     spawn(restartScript, { shell: true, detached: true });
