@@ -4,8 +4,8 @@
 // this program is free and u can
 // use it without restrictions
 //
-// app.js
-// this handles client app data
+// (target) app.js
+// this handles target app data
 
 const app = {
     initialized: false,

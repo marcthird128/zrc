@@ -1,15 +1,15 @@
 @echo off
 echo ZRC Test Script
-rmdir test > NUL 2> NUL
+rmdir /s /q test > NUL 2> NUL
 md test > NUL 2> NUL
-md test\client > NUL 2> NUL
-md test\server > NUL 2> NUL
-copy "build\client.js" "test\client\client.js" > NUL 2> NUL
-copy "build\server.js" "test\server\server.js" > NUL 2> NUL
-copy "scripts\client.bat" "test\client\client.bat" > NUL 2> NUL
-copy "scripts\server.bat" "test\server\server.bat" > NUL 2> NUL
-cd test\client
-start "Client" client.bat
-cd ..\server
-start "Server" server.bat
+md test\target > NUL 2> NUL
+md test\host > NUL 2> NUL
+copy "build\target.js" "test\target\target.js" > NUL 2> NUL
+copy "build\host.js" "test\host\host.js" > NUL 2> NUL
+copy "scripts\target.bat" "test\target\target.bat" > NUL 2> NUL
+copy "scripts\host.bat" "test\host\host.bat" > NUL 2> NUL
+cd test\target
+start "Target" target.bat
+cd ..\host
+start "Host" host.bat
 cd ..

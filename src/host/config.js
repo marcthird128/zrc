@@ -4,9 +4,9 @@
 // this program is free and u can
 // use it without restrictions
 //
-// (server) config.js
+// (host) config.js
 // handles reading and writing
-// to server config
+// to host config
 
 // import dependencies
 const fs = require('fs');

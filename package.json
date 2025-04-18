@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": "maza",
   "type": "commonjs",
-  "main": "it depends on if you are using it as a server or client",
+  "main": "it depends on if you are using it as a host or target",
   "scripts": {
     "windows": "scripts\\test",
     "linux": "./scripts/test",

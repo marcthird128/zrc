@@ -4,8 +4,8 @@
 // this program is free and u can
 // use it without restrictions
 //
-// (client) utils.js
-// this contains client utilities
+// (target) utils.js
+// this contains target utilities
 // for use in other modules
 
 // import deendencies
@@ -20,8 +20,8 @@ function fatal(msg) {
     // log to stderr
     process.stderr.write(msg);
 
-    // restart client
-    if (app.autoRestart) startClient();
+    // restart target
+    if (app.autoRestart) startTarget();
 
     // exit
     console.log('Exiting');
@@ -55,15 +55,15 @@ function log(msg) {
     process.stdout.write(msg);
 }
 
-// start a new client instance
-function startClient() {
-    console.log('Starting new client');
+// start a new target instance
+function startTarget() {
+    log('Starting new target instance');
     
     // get restart script
-    let restartScript = process.platform === 'win32' ? 'client.bat' : 'client.sh';
+    let restartScript = process.platform === 'win32' ? 'target.bat' : 'target.sh';
     
     // run it in new process
     spawn(restartScript, { shell: true, detached: true });
 }
 
-module.exports = { fatal, error, warn, log, startClient };
+module.exports = { fatal, error, warn, log, startTarget };

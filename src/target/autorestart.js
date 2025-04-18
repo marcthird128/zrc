@@ -4,13 +4,11 @@
 // this program is free and u can
 // use it without restrictions
 //
-// autorestart.js
-// this code makes sure the client will
+// (target) autorestart.js
+// this code makes sure the target will
 // restart when smth fails
 
 // import dependencies
-const fs = require('fs');
-const app = require('./app.js');
 const { fatal } = require('./utils.js');
 
 // init

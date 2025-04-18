@@ -4,8 +4,8 @@
 // this program is free and u can
 // use it without restrictions
 //
-// server.js
-// runs a HTTP server on the client for requests
+// (target) server.js
+// runs a HTTP server on the target for requests
 // from the host
 
 // import dependencies
@@ -13,14 +13,14 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const app = require('./app.js');
-const { fatal, error, warn, log } = require('./utils.js');
+const { error, log } = require('./utils.js');
 
 // init & create server
 function init() {
-    app.clientServer = http.createServer(handleRequest);
-    const data = app.config.client.split(':');
-    app.clientServer.listen(+data[1], data[0]);
-    log('Client server listening on ' + app.config.client);
+    app.targetServer = http.createServer(handleRequest);
+    const data = app.config.listenOn.split(':');
+    app.targetServer.listen(+data[1], data[0]);
+    log('Target server listening on ' + app.config.listenOn);
 }
 
 // handle server request

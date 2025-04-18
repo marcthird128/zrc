@@ -3,8 +3,8 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   entry: {
-    client: './src/client/main.js',
-    server: './src/server/main.js',
+    target: './src/target/main.js',
+    host: './src/host/main.js',
   },
 
   output: {

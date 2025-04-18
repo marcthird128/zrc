@@ -1,5 +1,5 @@
 @echo off
 timeout /t 1 /nobreak > NUL
-echo ZRC client launch script
+echo ZRC host launch script
 echo.
-node client.js
+node host.js

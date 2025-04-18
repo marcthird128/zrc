@@ -4,8 +4,8 @@
 // this program is free and u can
 // use it without restrictions
 //
-// (server) main.js
-// this is the main server code
+// (host) main.js
+// this is the main host code
 
 // import dependencies
 const config = require('./config.js');

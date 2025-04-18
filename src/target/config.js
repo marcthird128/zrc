@@ -4,8 +4,8 @@
 // this program is free and u can
 // use it without restrictions
 //
-// (client) config.js
-// this loads the client config
+// (target) config.js
+// this loads the target config
 
 // import dependencies
 const fs = require('fs');
@@ -18,8 +18,7 @@ const configPath = './config.json';
 const defaultConfig =
 `{
     "autoRestart": false,
-    "client": "127.0.0.1:65535",
-    "server": "10.0.0.65:65535"
+    "listenOn": "127.0.0.1:65535"
 }`
 
 // load config
