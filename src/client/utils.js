@@ -40,7 +40,7 @@ function error(msg) {
 // warning
 function warn(msg) {
     // format msg
-    msg = '\x1b[1;33m[WARN] ' + msg + '\n\x1b[0m';
+    msg = '\x1b[33m[WARN] ' + msg + '\n\x1b[0m';
 
     // log to stdout
     process.stdout.write(msg);
