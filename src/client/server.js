@@ -10,7 +10,6 @@
 
 // import dependencies
 const http = require('http');
-const url = require('url');
 const fs = require('fs');
 const path = require('path');
 const app = require('./app.js');
@@ -25,9 +24,7 @@ function init() {
 }
 
 // handle server request
-function handleRequest(req, res) {
-    log('Got request for ' + req.url);
-    
+function handleRequest(req, res) {    
     // convert to request object
     let obj = null;
     try {
@@ -42,6 +39,8 @@ function handleRequest(req, res) {
         error('Expected "type" property in obj')
         return res.end();
     }
+
+    log('Handling request for ' + req.url);
 
     // handle request
     if (obj.type == 'fsget') {
