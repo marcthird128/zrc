@@ -4,7 +4,7 @@
 // this program is free and u can
 // use it without restrictions
 //
-// utils.js
+// (client) utils.js
 // this contains client utilities
 // for use in other modules
 

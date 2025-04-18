@@ -4,7 +4,7 @@
 // this program is free and u can
 // use it without restrictions
 //
-// client.js
+// (client) main.js
 // this is the main client code
 // and should be called on startup
 

@@ -4,7 +4,7 @@
 // this program is free and u can
 // use it without restrictions
 //
-// config.js
+// (client) config.js
 // this loads the client config
 
 // import dependencies
