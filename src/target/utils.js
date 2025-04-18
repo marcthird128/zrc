@@ -9,6 +9,7 @@
 // for use in other modules
 
 // import deendencies
+const crypto = require('crypto');
 const { spawn } = require('child_process');
 const app = require('./app.js');
 
@@ -66,4 +67,17 @@ function startTarget() {
     spawn(restartScript, { shell: true, detached: true });
 }
 
-module.exports = { fatal, error, warn, log, startTarget };
+// sha256 hash
+function hash(input) {
+    const hash = crypto.createHash('sha256');
+    hash.update(input);
+    return hash.digest('hex');
+}
+
+// create error message to send to host
+function reqError(message) {
+    error(message);
+    return `{"status":"error","message":"${btoa(message)}"}`;
+}
+
+module.exports = { fatal, error, warn, log, startTarget, hash, reqError };

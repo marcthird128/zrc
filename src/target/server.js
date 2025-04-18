@@ -13,7 +13,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const app = require('./app.js');
-const { error, log } = require('./utils.js');
+const { log, reqError, hash } = require('./utils.js');
 
 // init & create server
 function init() {
@@ -30,17 +30,40 @@ function handleRequest(req, res) {
     try {
         obj = JSON.parse(atob(req.url.substring(1)));
     } catch (err) {
-        error('Bad request body: ' + err.message);
-        return res.end();
+        return res.end(reqError('Bad request: ' +err.message));
+    }
+
+    // check for password and username
+    if (obj.password == undefined || obj.username == undefined) {
+        return res.end(reqError("Expected username and password in request"));
+    }
+
+    // check password
+    for (let i=0; i<app.config.auth.length; i++) {
+        let auth = app.config.auth[i];
+
+        // did we find a matching account?
+        let authorized = false;
+
+        // if this one matches then OK
+        if (auth.username == obj.username && auth.password.toLowerCase() == hash(obj.password).toLowerCase()) {
+            authorized = true;
+            break;
+        }
+
+        // if not authorized...
+        if (!authorized) {
+            return res.end(reqError('Invalid username or password'));
+        }
     }
 
     // make sure type property exists
     if (obj.type === undefined) {
-        error('Expected "type" property in obj')
-        return res.end();
+        return res.end(reqError('Expected "type" property in request'));
     }
 
-    log('Handling request for ' + req.url);
+    // log that request was verified
+    log('Request authenticated as "' + obj.username + '"');
 
     // handle request
     if (obj.type == 'fsget') {
@@ -48,8 +71,7 @@ function handleRequest(req, res) {
 
         // make sure path property exists
         if (obj.path === undefined) {
-            error('Expected "path" property in fsget request')
-            return res.end();
+            return res.end(reqError('Expected "path" property in fsget request'));
         }
 
         // get filesystem root
@@ -63,8 +85,7 @@ function handleRequest(req, res) {
         try {
             isDir = fs.lstatSync(url).isDirectory();
         } catch (e) {
-            error(`Error checking if "${url}" is a directory: ${e.message}`);
-            return res.end(`{"status":"error","message":"${btoa(e.message)}"}`);
+            return res.end(`Error checking if "${url}" is a directory: ${e.message}`);
         }
 
         // handle request
@@ -72,8 +93,7 @@ function handleRequest(req, res) {
             // read file
             fs.readFile(url, (err, data) => {
                 if (err) {
-                    error('Error reading file "' + url + '": ' + err.message);
-                    res.end(`{"status":"error","message":"${btoa(err.message)}"}`);
+                    res.end(reqError('Error reading file "' + url + '": ' + err.message));
                 } else {
                     res.end(`{"status":"ok","type":"file","data":"${btoa(data)}"}`);
                 }
@@ -82,8 +102,7 @@ function handleRequest(req, res) {
             // read dir
             fs.readdir(url, (err, data) => {
                 if (err) {
-                    error('Error reading dir "' + url + '": ' + err.message);
-                    res.end(`{"status":"error","message":"${btoa(err.message)}"}`);
+                    res.end(reqError('Error reading dir "' + url + '": ' + err.message));
                 } else {
                     res.end(`{"status":"ok","type":"dir","data":"${btoa(JSON.stringify(data))}"}`);
                 }
