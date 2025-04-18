@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": "maza",
   "type": "commonjs",
-  "main": "client.bat",
+  "main": "it depends on if you are using it as a server or client",
   "scripts": {
     "test": "test",
     "build": "webpack"
