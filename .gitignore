@@ -1,5 +1,8 @@
 # Node modules
-node_modules
+node_modules/
 
 # build results
-build
+build/
+
+# temp tests
+test/
