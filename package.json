@@ -1,0 +1,26 @@
+{
+  "name": "zrc",
+  "version": "1.0.0",
+  "description": "node.js based remote control and file managing program",
+  "keywords": [
+    "remote",
+    "file",
+    "share"
+  ],
+  "homepage": "https://github.com/marcthird128/zrc#readme",
+  "bugs": {
+    "url": "https://github.com/marcthird128/zrc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcthird128/zrc.git"
+  },
+  "license": "MIT",
+  "author": "maza",
+  "type": "commonjs",
+  "main": "client.bat",
+  "scripts": {
+    "test": "./test",
+    "start": "node server.js"
+  }
+}

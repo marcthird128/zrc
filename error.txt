@@ -1,4 +1,0 @@
-[1;31m[ERROR] Could not load config file: ENOENT: no such file or directory, open 'C:\Users\platt\dev\proj\ZRC\config.json'
-[0m[1;31m[ERROR] Bad request body: Unexpected end of JSON input
-[0m[1;31m[ERROR] Bad request body: Invalid character
-[0m^C
