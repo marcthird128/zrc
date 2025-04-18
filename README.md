@@ -4,7 +4,7 @@ ZRC is a simple remote control / file sharing service that allows connecting to 
 
 ## Download
 
-Download the `server.js` and `client.js` from the `release` folder.
+[Server download](https://raw.githubusercontent.com/marcthird128/zrc/refs/heads/main/release/server.js) [Client download](https://raw.githubusercontent.com/marcthird128/zrc/refs/heads/main/release/client.js)
 
 ## Usage
 
